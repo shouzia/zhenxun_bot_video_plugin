@@ -39,7 +39,8 @@ __plugin_configs__ = {
 
 video = on_regex("^(\d?)连?(sp|视频|来点视频|video)$", priority=5, block=True)
 
-url = "https://v.api.aa1.cn/api/api-dy-girl/index.php?aa1=ajdu987hrjfw"
+# url = "https://v.api.aa1.cn/api/api-dy-girl/index.php?aa1=ajdu987hrjfw"
+url = "http://api.qemao.com/api/douyin/"
 
 
 @video.handle()
