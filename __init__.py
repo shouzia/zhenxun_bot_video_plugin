@@ -9,6 +9,17 @@ import requests
 from typing import Tuple, Any
 from nonebot.params import RegexGroup
 
+
+from nonebot.plugin import PluginMetadata
+
+from zhenxun.configs.config import Config
+from zhenxun.configs.path_config import TEMP_PATH
+from zhenxun.configs.utils import PluginExtraData, RegisterConfig
+from zhenxun.services.log import logger
+from zhenxun.utils.http_utils import AsyncHttpx
+from zhenxun.utils.message import MessageUtils
+from zhenxun.utils.withdraw_manage import WithdrawManager
+
 __zx_plugin_name__ = "video"
 __plugin_usage__ = """
 usage：
@@ -36,6 +47,28 @@ __plugin_configs__ = {
     },
 }
 
+
+__plugin_meta__ = PluginMetadata(
+    name="随机视频",
+    description="可以随机视频 的 Nonebot 插件",
+    usage="""
+    视频/sp/来点视频/video
+    示例: 视频/sp/来点视频/video
+    """.strip(),
+    extra=PluginExtraData(
+        author="shouzi",
+        version="0.1",
+        configs=[
+            RegisterConfig(
+                key="WITHDRAW_VIDEO_MESSAGE",
+                value=(60, 1),
+                help="自动撤回，参1：延迟撤回KIMI_AI时间(秒)，0 为关闭 | 参2：监控聊天类型，0(私聊) 1(群聊) 2(群聊+私聊)",
+                default_value=(0, 1),
+                type=Tuple[int, int],
+            ),
+        ],
+    ).dict(),
+)
 
 video = on_regex("^(\d?)连?(sp|视频|来点视频|video)$", priority=5, block=True)
 
