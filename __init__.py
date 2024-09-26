@@ -2,7 +2,6 @@ from nonebot.adapters.onebot.v11 import Message, MessageSegment
 from nonebot import on_regex
 from nonebot.typing import T_State
 from nonebot.adapters import Bot, Event
-from services.log import logger
 from utils.manager import withdraw_message_manager
 from configs.config import Config
 import requests
